@@ -42,7 +42,7 @@ class CarDetailActivity : AppCompatActivity(), Callback<Car> {
         fabEdit = findViewById(R.id.fab_edit)
         fabEdit!!.setOnClickListener {
             val intent = Intent(this@CarDetailActivity, CarDetailActivity::class.java)
-            intent.putExtra("ep.rest.book", car)
+            intent.putExtra("ep.rest.car", car)
             startActivity(intent)
         }
         fabDelete = findViewById(R.id.fab_delete)
@@ -50,7 +50,7 @@ class CarDetailActivity : AppCompatActivity(), Callback<Car> {
             val dialog = AlertDialog.Builder(this@CarDetailActivity)
             dialog.setTitle("Confirm deletion")
             dialog.setMessage("Are you sure?")
-            dialog.setPositiveButton("Yes") { dialog, which -> deleteBook() }
+            dialog.setPositiveButton("Yes") { dialog, which -> deleteCar() }
             dialog.setNegativeButton("Cancel", null)
             dialog.create().show()
         }
@@ -64,7 +64,7 @@ class CarDetailActivity : AppCompatActivity(), Callback<Car> {
         }
     }
 
-    private fun deleteBook() {
+    private fun deleteCar() {
         val id = intent.getIntExtra("ep.rest.id", 0)
         CarService.instance.delete(id).enqueue(object : Callback<Void?> {
             override fun onFailure(call: Call<Void?>?, t: Throwable?) {

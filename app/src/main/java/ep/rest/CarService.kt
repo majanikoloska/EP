@@ -21,7 +21,7 @@ object CarService {
         @GET("cars/{id}")
         fun get(@Path("id") id: Int): Call<Car>
 
-        @DELETE("books/{id}")
+        @DELETE("cars/{id}")
         fun delete(@Path("id") id: Int): Call<Void>
 
         @FormUrlEncoded

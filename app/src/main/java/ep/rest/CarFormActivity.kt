@@ -38,7 +38,7 @@ class CarFormActivity : AppCompatActivity(), View.OnClickListener, Callback<Void
         button!!.setOnClickListener(this)
 
         val intent = intent
-        car = intent.getSerializableExtra("ep.rest.book") as Car
+        car = intent.getSerializableExtra("ep.rest.car") as Car
         if (car != null) {
             marka!!.setText(car!!.marka)
             slika!!.setText(car!!.slika)
