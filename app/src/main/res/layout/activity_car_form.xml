@@ -35,11 +35,11 @@
         android:inputType="number" />
 
     <EditText
-        android:id="@+id/etSlika"
+        android:id="@+id/etOpis"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="@string/slika"
+        android:hint="@string/opis"
         android:inputType="number" />
 
     <Button

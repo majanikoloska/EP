@@ -4,8 +4,8 @@
     <string name="action_settings">Settings</string>
     <string name="marka">Marka</string>
     <string name="aktiven">Aktiven</string>
-    <string name="cena">Cena v EUR</string>
-    <string name="slika">Slika</string>
+    <string name="cena">Cena v USD</string>
+    <string name="opis">Opis</string>
     <string name="save">Save</string>
     <string name="action_edit">Edit</string>
     <string name="action_delete">Delete</string>

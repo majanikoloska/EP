@@ -14,6 +14,8 @@ import androidx.appcompat.widget.Toolbar
 
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlinx.android.synthetic.main.activity_car_detail.*
+import kotlinx.android.synthetic.main.content_car_detail.*
 
 import java.io.IOException
 
@@ -24,45 +26,38 @@ import retrofit2.Response
 class CarDetailActivity : AppCompatActivity(), Callback<Car> {
 
     private var car: Car? = null
-    private var tvCarDetail: TextView? = null
-    private var toolbarLayout: CollapsingToolbarLayout? = null
-    private var fabEdit: FloatingActionButton? = null
-    private var fabDelete: FloatingActionButton? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_car_detail)
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-        toolbarLayout = findViewById(R.id.toolbar_layout)
-
-        tvCarDetail = findViewById(R.id.tv_car_detail)
-
-        fabEdit = findViewById(R.id.fab_edit)
-        fabEdit!!.setOnClickListener {
-            val intent = Intent(this@CarDetailActivity, CarDetailActivity::class.java)
+        fab_edit.setOnClickListener {
+            val intent = Intent(this, CarFormActivity::class.java)
             intent.putExtra("ep.rest.car", car)
             startActivity(intent)
         }
-        fabDelete = findViewById(R.id.fab_delete)
-        fabDelete!!.setOnClickListener {
-            val dialog = AlertDialog.Builder(this@CarDetailActivity)
+
+        fab_delete.setOnClickListener {
+            val dialog = AlertDialog.Builder(this)
             dialog.setTitle("Confirm deletion")
             dialog.setMessage("Are you sure?")
-            dialog.setPositiveButton("Yes") { dialog, which -> deleteCar() }
+            dialog.setPositiveButton("Yes") { _, _ -> deleteCar() }
             dialog.setNegativeButton("Cancel", null)
             dialog.create().show()
         }
 
 
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val id = intent.getIntExtra("ep.rest.id", 0)
+
         if (id > 0) {
             CarService.instance.get(id).enqueue(this)
         }
     }
+
+
 
     private fun deleteCar() {
         val id = intent.getIntExtra("ep.rest.id", 0)
@@ -79,20 +74,20 @@ class CarDetailActivity : AppCompatActivity(), Callback<Car> {
 
     override fun onResponse(call: Call<Car>, response: Response<Car>) {
         car = response.body()
-        Log.i(TAG, "Got result: " + car!!)
+        Log.i(TAG, "Got result: $car")
+
         if (response.isSuccessful) {
-            tvCarDetail!!.text = car!!.marka
-            toolbarLayout!!.title = car!!.marka
+            tv_car_detail.text = car?.opis
+            toolbar_layout.title = car?.marka
         } else {
-            var errorMessage: String
-            try {
-                errorMessage = "An error occurred: " + response.errorBody()?.string()
+            val errorMessage = try {
+                "An error occurred: ${response.errorBody()?.string()}"
             } catch (e: IOException) {
-                errorMessage = "An error occurred: error while decoding the error message."
+                "An error occurred: error while decoding the error message."
             }
 
             Log.e(TAG, errorMessage)
-            tvCarDetail!!.text = errorMessage
+            tv_car_detail.text = errorMessage
         }
     }
 
