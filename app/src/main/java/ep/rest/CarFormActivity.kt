@@ -70,8 +70,8 @@ class CarFormActivity : AppCompatActivity(), View.OnClickListener, Callback<Void
             if (car == null) {
                 Log.i(TAG, "Insertion completed.")
                 // Preberemo Location iz zaglavja
-                val parts = headers.get("Location").split("/".toRegex())?.dropLastWhile { it.isEmpty() }?.toTypedArray()
-                id = parts?.get(parts.size - 1)?.toInt()
+                val parts = headers.get("Location")?.split("/".toRegex())?.dropLastWhile { it.isEmpty() }?.toTypedArray()
+                id = parts?.get(parts.size - 1)?.toInt()!!
             } else {
                 Log.i(TAG, "Editing saved.")
                 id = car!!.id

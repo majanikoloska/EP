@@ -15,11 +15,11 @@ object CarService {
 
     interface RestApi {
 
-        @get:GET("cars")
-        val all: Call<List<Car>>
+        @GET("cars")
+        fun getAll(): Call<List<Car>>
 
         @GET("cars/{id}")
-        operator fun get(@Path("id") id: Int): Call<Car>
+        fun get(@Path("id") id: Int): Call<Car>
 
         @DELETE("books/{id}")
         fun delete(@Path("id") id: Int): Call<Void>
@@ -40,7 +40,7 @@ object CarService {
                    @Field("aktiven") aktiven: Int): Call<Void>
 
         companion object {
-            val URL = "http://10.0.2.2:8080/netbeans/mvc-rest/api/"
+            val URL = "http://10.0.2.2:8080/netbeans/EP/"
         }
 
 

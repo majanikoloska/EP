@@ -25,10 +25,9 @@
         <ImageView
             android:id="@+id/tv_slika"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="89dp"
             android:layout_weight="3"
-            android:gravity="start|center_vertical"
-            android:srcCompat="@drawable/ic_launcher_background" />
+            android:gravity="start|center_vertical" />
 
         <TextView
             android:id="@+id/tv_price"
