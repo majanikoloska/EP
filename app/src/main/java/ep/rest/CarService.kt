@@ -27,7 +27,7 @@ object CarService {
         @FormUrlEncoded
         @POST("cars")
         fun insert(@Field("marka") marka: String,
-                   @Field("slika") slika: String,
+                   @Field("opis") opis: String,
                    @Field("cena") cena: Int,
                    @Field("aktiven") aktiven: Int): Call<Void>
 
@@ -35,7 +35,7 @@ object CarService {
         @PUT("cars/{id}")
         fun update(@Path("id") id: Int,
                    @Field("marka") marka: String,
-                   @Field("slika") slika: String,
+                   @Field("opis") opis: String,
                    @Field("cena") cena: Int,
                    @Field("aktiven") aktiven: Int): Call<Void>
 

@@ -22,11 +22,11 @@ class CarAdapter(context: Context) : ArrayAdapter<Car>(context, 0, ArrayList()) 
         }
 
         val tvMarka = convertView!!.findViewById<TextView>(R.id.tv_marka)
-        //        final TextView tvSlika = convertView.findViewById(R.id.tv_slika);
+        val tvOpis = convertView!!.findViewById<TextView>(R.id.tv_opis)
         val tvPrice = convertView.findViewById<TextView>(R.id.tv_price)
 
         tvMarka.setText(car!!.marka)
-        //        tvSlika.setText(car.slika);
+        tvOpis.setText(car.opis);
         tvPrice.text = String.format(Locale.ENGLISH, "%.2f EUR", car!!.cena)
 
         return convertView
