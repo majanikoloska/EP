@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/logInName"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:hint="Name" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/logInSurname"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:hint="Surname" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/logInPostalCode"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:hint="Postal Code" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/logInCity"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:hint="City" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_horizontal">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/logInStreet"
+                            android:layout_width="300dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:hint="Street" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/logInStreetNumber"
+                                android:layout_width="300dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_horizontal"
+                                android:hint="Street Number" />
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center_horizontal">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/logInPhoneNumber"
+                                    android:layout_width="300dp"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_horizontal"
+                                    android:hint="Phone Number" />
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center_horizontal">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/logInEmail"
+                                        android:layout_width="300dp"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_horizontal"
+                                        android:hint="Email" />
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:gravity="center_horizontal">
+
+                                        <com.google.android.material.textfield.TextInputEditText
+                                            android:id="@+id/logInPassword"
+                                            android:layout_width="300dp"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center_horizontal"
+                                            android:hint="Password" />
+
+                                        <com.google.android.material.textfield.TextInputLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:gravity="center_horizontal">
+
+                                            <com.google.android.material.textfield.TextInputEditText
+                                                android:id="@+id/logInRepeatPassword"
+                                                android:layout_width="300dp"
+                                                android:layout_height="wrap_content"
+                                                android:gravity="center_horizontal"
+                                                android:hint="Repeat Password" />
+
+                                            <Button
+                                                android:id="@+id/logInButton"
+                                                android:layout_width="160dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginTop="20dp"
+                                                android:text="Register" />
+
+                                        </com.google.android.material.textfield.TextInputLayout>
+                                    </com.google.android.material.textfield.TextInputLayout>
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
+
+</LinearLayout>
