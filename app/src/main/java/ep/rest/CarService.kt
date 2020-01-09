@@ -3,13 +3,7 @@ package ep.rest
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.DELETE
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.PUT
-import retrofit2.http.Path
+import retrofit2.http.*
 
 object CarService {
 
@@ -22,26 +16,26 @@ object CarService {
         @GET("json/bazaInit.php")
         fun getAll(): Call<List<Car>>
 
-        @GET("json/bazaInit.php?id_avto={id_avto}")
-        fun get(@Path("id_avto") id_avto: Int): Call<Car>
-
         @DELETE("json/bazaInit.php?id_avto={id_avto}")
         fun delete(@Path("id_avto") id_avto: Int): Call<Void>
+
+        @GET("json/bazaInit.php")
+        fun get(@Query("id_avto") id_avto: Int): Call<Car>
 
         @FormUrlEncoded
         @POST("json/bazaInit.php")
         fun insert(@Field("marka") marka: String,
-                   @Field("opis") opis: String,
                    @Field("cena") cena: Int,
-                   @Field("aktiven") aktiven: Int): Call<Void>
+                   @Field("aktiven") aktiven: Int,
+                   @Field("opis") opis: String): Call<Void>
 
         @FormUrlEncoded
         @PUT("json/bazaInit.php?id_avto={id_avto}")
         fun update(@Path("id_avto") id_avto: Int,
                    @Field("marka") marka: String,
-                   @Field("opis") opis: String,
                    @Field("cena") cena: Int,
-                   @Field("aktiven") aktiven: Int): Call<Void>
+                   @Field("aktiven") aktiven: Int,
+                   @Field("opis") opis: String): Call<Void>
 
 
 

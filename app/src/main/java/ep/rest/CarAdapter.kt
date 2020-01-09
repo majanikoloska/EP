@@ -6,29 +6,28 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
-
-import java.util.ArrayList
-import java.util.Locale
+import java.util.*
 
 class CarAdapter(context: Context) : ArrayAdapter<Car>(context, 0, ArrayList()) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        var convertView = convertView
+        // Check if an existing view is being reused, otherwise inflate the view
+        val view = if (convertView == null)
+            LayoutInflater.from(context).inflate(R.layout.carlist_element, parent, false)
+        else
+            convertView
+
+        val tvTitle = view.findViewById<TextView>(R.id.tvTitle)
+        val tvPrice = view.findViewById<TextView>(R.id.tvPrice)
+
+
         val car = getItem(position)
 
-        // Check if an existing view is being reused, otherwise inflate the view
-        if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.carlist_element, parent, false)
+        tvTitle.text = car?.marka
+        if (car != null) {
+            tvPrice.text = String.format(Locale.ENGLISH, "%.2f EUR", car.cena.toDouble())
         }
 
-        val tvMarka = convertView!!.findViewById<TextView>(R.id.tv_marka)
-        val tvOpis = convertView!!.findViewById<TextView>(R.id.tv_opis)
-        val tvPrice = convertView.findViewById<TextView>(R.id.tv_price)
-
-        tvMarka.setText(car!!.marka)
-        tvOpis.setText(car.opis);
-        tvPrice.text = String.format(Locale.ENGLISH, "%.2f EUR", car.cena.toDouble())
-
-        return convertView
+        return view
     }
 }

@@ -2,20 +2,13 @@ package ep.rest
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.widget.Button
-import android.widget.EditText
-
 import androidx.appcompat.app.AppCompatActivity
+import android.util.Log
 import kotlinx.android.synthetic.main.activity_car_form.*
-
-import java.io.IOException
-
-import okhttp3.Headers
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.IOException
 
 class CarFormActivity : AppCompatActivity(), Callback<Void> {
 
@@ -25,25 +18,25 @@ class CarFormActivity : AppCompatActivity(), Callback<Void> {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_car_form)
 
-        button.setOnClickListener {
+        btnSave.setOnClickListener {
             val marka = etMarka.text.toString().trim()
             val aktiven = etAktiven.text.toString().trim().toInt()
-            val description = etOpis.text.toString().trim()
-            val price = etCena.text.toString().trim().toInt()
+            val opis = etDescription.text.toString().trim()
+            val cena = etCena.text.toString().trim().toInt()
 
             if (car == null) { // dodajanje
-                CarService.instance.insert(marka, description, price,
-                        aktiven).enqueue(this)
+                CarService.instance.insert(marka, cena,
+                        aktiven, opis).enqueue(this)
             } else { // urejanje
-                CarService.instance.update(car!!.id_avto, marka, description, price,
-                        aktiven).enqueue(this)
+                CarService.instance.update(car!!.id_avto, marka, cena,
+                        aktiven, opis).enqueue(this)
             }
         }
 
-        val car = intent?.getSerializableExtra("ep.rest.book") as Car?
+        val car = intent?.getSerializableExtra("ep.rest.car") as Car?
         if (car != null) {
             etMarka.setText(car.marka)
-            etOpis.setText(car.opis)
+            etDescription.setText(car.opis)
             etCena.setText(car.cena.toString())
             etAktiven.setText(car.aktiven.toString())
             this.car = car

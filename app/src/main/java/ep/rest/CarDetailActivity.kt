@@ -1,27 +1,17 @@
 package ep.rest
 
 import android.app.AlertDialog
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.TextView
-import android.widget.Toast
-
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
-
-import com.google.android.material.appbar.CollapsingToolbarLayout
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.activity_car_detail.*
 import kotlinx.android.synthetic.main.content_car_detail.*
-
-import java.io.IOException
-
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.IOException
 
 class CarDetailActivity : AppCompatActivity(), Callback<Car> {
 
@@ -32,18 +22,39 @@ class CarDetailActivity : AppCompatActivity(), Callback<Car> {
         setContentView(R.layout.activity_car_detail)
         setSupportActionBar(toolbar)
 
+        fabEdit.setOnClickListener {
+            val intent = Intent(this, CarFormActivity::class.java)
+            intent.putExtra("ep.rest.book", car)
+            startActivity(intent)
+        }
+
+        fabDelete.setOnClickListener {
+            val dialog = AlertDialog.Builder(this)
+            dialog.setTitle("Confirm deletion")
+            dialog.setMessage("Are you sure?")
+            dialog.setPositiveButton("Yes") { _, _ -> deleteCar() }
+            dialog.setNegativeButton("Cancel", null)
+            dialog.create().show()
+        }
 
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val id = intent.getIntExtra("ep.rest.id", 0)
 
+
         if (id > 0) {
             CarService.instance.get(id).enqueue(this)
+
+            val opis = intent.getStringExtra("ep.rest.opis")
+
+            val tvCarDetail: TextView = findViewById(R.id.tvCarDetail) as TextView
+
+            tvCarDetail.text = opis
+
+
         }
     }
-
-
 
     private fun deleteCar() {
         val id = intent.getIntExtra("ep.rest.id", 0)
@@ -63,8 +74,8 @@ class CarDetailActivity : AppCompatActivity(), Callback<Car> {
         Log.i(TAG, "Got result: $car")
 
         if (response.isSuccessful) {
-            tv_car_detail.text = car?.opis
-            toolbar_layout.title = car?.marka
+            tvCarDetail.text = car?.opis
+            toolbarLayout.title = car?.marka
         } else {
             val errorMessage = try {
                 "An error occurred: ${response.errorBody()?.string()}"
@@ -73,12 +84,12 @@ class CarDetailActivity : AppCompatActivity(), Callback<Car> {
             }
 
             Log.e(TAG, errorMessage)
-            tv_car_detail.text = errorMessage
+            tvCarDetail.text = errorMessage
         }
     }
 
     override fun onFailure(call: Call<Car>, t: Throwable) {
-        Log.w(TAG, "Error: " + t.message, t)
+        Log.w(TAG, "Error: ${t.message}", t)
     }
 
     companion object {

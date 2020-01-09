@@ -26,14 +26,15 @@ class MainActivity : AppCompatActivity(), Callback<List<Car>> {
             val car = adapter?.getItem(i)
             if (car != null) {
                 val intent = Intent(this, CarDetailActivity::class.java)
-                intent.putExtra("ep.rest.id_avto", car.id_avto)
+                intent.putExtra("ep.rest.id", car.id_avto)
+                intent.putExtra("ep.rest.opis", car.opis)
                 startActivity(intent)
             }
         }
 
         container.setOnRefreshListener { CarService.instance.getAll().enqueue(this) }
 
-        addButton.setOnClickListener {
+        btnSave.setOnClickListener {
             val intent = Intent(this, CarFormActivity::class.java)
             startActivity(intent)
         }
