@@ -15,33 +15,35 @@ object CarService {
 
     interface RestApi {
 
-        @GET("cars")
+        companion object {
+            const val URL = "http://10.0.2.2:8080/netbeans/EP/"
+        }
+
+        @GET("json/bazaInit.php")
         fun getAll(): Call<List<Car>>
 
-        @GET("cars/{id}")
-        fun get(@Path("id") id: Int): Call<Car>
+        @GET("json/bazaInit.php?id_avto={id_avto}")
+        fun get(@Path("id_avto") id_avto: Int): Call<Car>
 
-        @DELETE("cars/{id}")
-        fun delete(@Path("id") id: Int): Call<Void>
+        @DELETE("json/bazaInit.php?id_avto={id_avto}")
+        fun delete(@Path("id_avto") id_avto: Int): Call<Void>
 
         @FormUrlEncoded
-        @POST("cars")
+        @POST("json/bazaInit.php")
         fun insert(@Field("marka") marka: String,
                    @Field("opis") opis: String,
                    @Field("cena") cena: Int,
                    @Field("aktiven") aktiven: Int): Call<Void>
 
         @FormUrlEncoded
-        @PUT("cars/{id}")
-        fun update(@Path("id") id: Int,
+        @PUT("json/bazaInit.php?id_avto={id_avto}")
+        fun update(@Path("id_avto") id_avto: Int,
                    @Field("marka") marka: String,
                    @Field("opis") opis: String,
                    @Field("cena") cena: Int,
                    @Field("aktiven") aktiven: Int): Call<Void>
 
-        companion object {
-            val URL = "http://10.0.2.2:8080/netbeans/EP/"
-        }
+
 
 
     }

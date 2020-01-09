@@ -35,7 +35,7 @@ class CarFormActivity : AppCompatActivity(), Callback<Void> {
                 CarService.instance.insert(marka, description, price,
                         aktiven).enqueue(this)
             } else { // urejanje
-                CarService.instance.update(car!!.id, marka, description, price,
+                CarService.instance.update(car!!.id_avto, marka, description, price,
                         aktiven).enqueue(this)
             }
         }
@@ -63,7 +63,7 @@ class CarFormActivity : AppCompatActivity(), Callback<Void> {
             } else {
                 Log.i(TAG, "Editing saved.")
                 // spremenljivka id dobi vrednost, ki jo vrne zadnji izraz v bloku
-                car!!.id
+                car!!.id_avto
             }
 
             val intent = Intent(this, CarDetailActivity::class.java)

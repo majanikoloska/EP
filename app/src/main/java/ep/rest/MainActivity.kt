@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity(), Callback<List<Car>> {
             val car = adapter?.getItem(i)
             if (car != null) {
                 val intent = Intent(this, CarDetailActivity::class.java)
-                intent.putExtra("ep.rest.id", car.id)
+                intent.putExtra("ep.rest.id_avto", car.id_avto)
                 startActivity(intent)
             }
         }

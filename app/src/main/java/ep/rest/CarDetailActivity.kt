@@ -32,20 +32,6 @@ class CarDetailActivity : AppCompatActivity(), Callback<Car> {
         setContentView(R.layout.activity_car_detail)
         setSupportActionBar(toolbar)
 
-        fab_edit.setOnClickListener {
-            val intent = Intent(this, CarFormActivity::class.java)
-            intent.putExtra("ep.rest.car", car)
-            startActivity(intent)
-        }
-
-        fab_delete.setOnClickListener {
-            val dialog = AlertDialog.Builder(this)
-            dialog.setTitle("Confirm deletion")
-            dialog.setMessage("Are you sure?")
-            dialog.setPositiveButton("Yes") { _, _ -> deleteCar() }
-            dialog.setNegativeButton("Cancel", null)
-            dialog.create().show()
-        }
 
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)

@@ -27,7 +27,7 @@ class CarAdapter(context: Context) : ArrayAdapter<Car>(context, 0, ArrayList()) 
 
         tvMarka.setText(car!!.marka)
         tvOpis.setText(car.opis);
-        tvPrice.text = String.format(Locale.ENGLISH, "%.2f EUR", car!!.cena)
+        tvPrice.text = String.format(Locale.ENGLISH, "%.2f EUR", car.cena.toDouble())
 
         return convertView
     }

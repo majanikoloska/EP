@@ -4,7 +4,7 @@ import java.io.Serializable
 
 class Car : Serializable {
 
-    var id: Int = 0
+    var id_avto: Int = 0
     var marka: String = ""
     var cena: Int = 0
     var aktiven: Int = 0
